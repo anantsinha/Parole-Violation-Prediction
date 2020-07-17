@@ -34,3 +34,13 @@ table(test$violator, prediction > 0.5)
 # baseline model
 table(test$violator)
 # accuracy of baseline modelis also 0.886
+
+# Generate ROC curve
+predictionMade <- prediction
+library(ROCR)
+ROCRPred <- prediction(predictionMade, test$violator)
+ROCRPerf <- performance(ROCRPred, "tpr", "fpr")
+plot(ROCRPerf, colorise = TRUE)
+
+# Calculate area under ROC curve
+as.numeric(performance(ROCRPred, "auc") @y.values)
