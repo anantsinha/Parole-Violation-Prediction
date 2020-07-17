@@ -18,3 +18,19 @@ library(caTools)
 split <- sample.split(parole$violator, SplitRatio = 0.7)
 train <- subset(parole, split == TRUE)
 test <- subset(parole, split == FALSE)
+
+
+m1 <- glm(violator~., data = train, family = "binomial")
+summary(m1)
+prediction <- predict(m1, newdata = test, type = "response")
+max(prediction)
+
+# show confusion matrix
+table(test$violator, prediction > 0.5)
+# sensitivity - 0.5217
+# specificity - 0.9329
+# accuracy - 0.886
+
+# baseline model
+table(test$violator)
+# accuracy of baseline modelis also 0.886
