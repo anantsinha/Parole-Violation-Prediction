@@ -11,3 +11,10 @@ head(parole)
 parole$state <- as.factor(parole$state)
 parole$crime <- as.factor(parole$crime)
 summary(parole$state)
+
+# split data to testing and training sets
+set.seed(144)
+library(caTools)
+split <- sample.split(parole$violator, SplitRatio = 0.7)
+train <- subset(parole, split == TRUE)
+test <- subset(parole, split == FALSE)
