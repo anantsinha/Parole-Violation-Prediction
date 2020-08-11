@@ -2,7 +2,7 @@
 
 ## Introduction
 
-> A logistic regression model to predict which convicts are likely to violate parole. ROC curve is generate in the end and the AUC is calculated.
+> A logistic regression model to predict which convicts are likely to violate parole. ROC curve is generated in the end and the AUC is calculated.
 
 ## Data Source
 
